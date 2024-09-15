@@ -1,6 +1,6 @@
 function App() {
     return (
-        <div>
+        <div className="dark:text-white">
             <div className={'font-primaryLight text-2xl flex justify-center'}>
                 درود بر کدهابیای عزیز
             </div>
