@@ -1,5 +1,6 @@
 import { Card_Homepage } from "../components/Card_Homepage"
-import Icon from "../assets/photo_6003374028309514589_y300.jpg";
+import Icon  from "../assets/icons/react.svg";
+
 export default function Testing() {
     return (
         <div className={'font-primaryBold text-2xl'}>
