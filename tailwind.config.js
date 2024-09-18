@@ -51,7 +51,7 @@ export default {
                 'danger': {
                     DEFAULT: '#DB2777',
                     50: '#F5C4DA',
-                    100: '#F2B3CF',
+                    100: '#F8D4E4',
                     200: '#EC90B9',
                     300: '#E76DA3',
                     400: '#E14A8D',
