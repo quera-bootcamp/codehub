@@ -24,5 +24,5 @@ export const Badge: React.FC<BadgeProps> = ({ price }) => {
     setFormattedPrice(result);
   }, [price]);
 
-  return <div className="bg-danger-600 text-danger-100 text-[11px] rounded-xl px-2 py-0.5 font-normal">{formattedPrice + " تومان"}</div>;
+  return <div className="bg-danger-600 text-danger-100 text-xs rounded-xl px-2 py-0.5 font-normal">{formattedPrice + " تومان"}</div>;
 };
