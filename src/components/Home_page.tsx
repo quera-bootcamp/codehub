@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { Card_Homepage } from './Card_Homepage';
+import Icon from "../assets/icons/react.svg"
 
 interface items_type {
-    price : string | number;
     title : string;
+    price : string | number;
+    imgsrce : string;
 }
 
 interface HomePageProps {
@@ -18,8 +21,12 @@ const Home_page : React.FC<HomePageProps> = ({items}) => {
     }, [items]);
 
   return (
-    <div>
-
+    <div className='flex flex-row flex-wrap w-[37%] gap-5 justify-start items-start'>
+      {
+        itemList.map((element , index) => (
+          <Card_Homepage price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrce={element.imgsrce || Icon} title={element.title} />
+        ))
+      }
     </div>
   )
 }
