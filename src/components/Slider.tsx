@@ -1,7 +1,7 @@
 import React from "react";
 
-// Define the type for the carousel item
-interface CarouselItem {
+// Define the type for the Slider item
+interface SliderlItem {
   imgSrc: string;
   price: string;
   brand: string;
@@ -14,20 +14,20 @@ interface CarouselItem {
   productName: string;
 }
 
-// Define the props interface for the Carousel component
-interface CarouselProps {
+// Define the props interface for the Slider component
+interface SliderProps {
   activeItemIndex: number;
   setActiveItemIndex: React.Dispatch<React.SetStateAction<number>>;
-  carouselData: CarouselItem[];
+  sliderData: SliderlItem[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({
+const Slider: React.FC<SliderProps> = ({
   activeItemIndex,
   setActiveItemIndex,
-  carouselData,
+  sliderData,
 }) => {
-  const totalItems = carouselData.length;
-  const activeItem = carouselData[activeItemIndex];
+  const totalItems = sliderData.length;
+  const activeItem = sliderData[activeItemIndex];
 
   const goToPrevious = () => {
     setActiveItemIndex(
@@ -41,7 +41,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <div className="flex flex-col items-center gap-4 p-2 min-w-[880px]">
-      {/* Image Carousel */}
+      {/* Image Slider */}
       <div className="flex items-center gap-2">
         <button
           onClick={goToPrevious}
@@ -62,7 +62,7 @@ const Carousel: React.FC<CarouselProps> = ({
         </button>
         {/* Previous button */}
 
-        {/* Active Carousel Item Image */}
+        {/* Active Slider Item Image */}
         <div className="flex justify-center">
           <img
             src={activeItem.imgSrc}
@@ -259,4 +259,4 @@ const Carousel: React.FC<CarouselProps> = ({
   );
 };
 
-export default Carousel;
+export default Slider;

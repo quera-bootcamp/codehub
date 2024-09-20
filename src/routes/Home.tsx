@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Carousel from "../components/Slider";
-import carouselData from "../../mock-data/SliderItems";
+import Slider from "../components/Slider";
+import sliderData from "../../mock-data/SliderItems";
 
 const Home = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <Carousel
+      <Slider
         activeItemIndex={activeItemIndex}
         setActiveItemIndex={setActiveItemIndex}
-        carouselData={carouselData}
+        sliderData={sliderData}
       />
     </div>
   );

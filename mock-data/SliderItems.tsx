@@ -1,4 +1,4 @@
-const carouselData = [
+const sliderlData = [
   {
     imgSrc: "./public/images/iphone-14-pro-model-unselect-gallery-1-202209.png",
     price: "10,000",
@@ -53,4 +53,4 @@ const carouselData = [
   },
 ];
 
-export default carouselData;
+export default sliderlData;
