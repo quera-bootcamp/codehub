@@ -10,7 +10,7 @@ interface CardHomepageProps {
 
 export const Card_Homepage: React.FC<CardHomepageProps> = ({ price , title , imgsrce = ""}) => {
   return (
-    <div className="flex flex-col grow gap-3 justify-start items-stretch w-80 relative">
+    <div className="flex flex-col grow gap-3 justify-start items-stretch w-52 relative">
       <Like_Icon/>
       <img className='rounded-xl' src={imgsrce} alt="" />
       <div className="flex flex-row justify-between items-center">
