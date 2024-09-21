@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply bg-default-100 dark:bg-default-950 dark:text-white font-primaryRegular;
+    }
+}
+
 @font-face {
     font-family: 'Light';
     src: local('iranYekan-Light'),
