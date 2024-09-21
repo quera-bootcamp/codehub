@@ -1,17 +1,22 @@
-import { useState } from "react";
+import {useState} from "react";
 import Slider from "../components/Slider";
 import sliderData from "../../mock-data/SliderItems";
 
 const Home = () => {
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <Slider
-        activeItemIndex={activeItemIndex}
-        setActiveItemIndex={setActiveItemIndex}
-        sliderData={sliderData}
-      />
-    </div>
-  );
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    return (
+        <>
+            <div className="flex justify-between">
+                {/*TO DO: Card home page*/}
+                <div>Card home page</div>
+                <Slider
+                    activeItemIndex={activeItemIndex}
+                    setActiveItemIndex={setActiveItemIndex}
+                    sliderData={sliderData}
+                />
+            </div>
+            {/* مجصولات ویژه */}
+        </>
+    );
 };
 export default Home;

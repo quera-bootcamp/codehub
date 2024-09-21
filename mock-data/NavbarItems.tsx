@@ -21,13 +21,13 @@ export const NavbarItems = [
         id: 3,
         icon: <AiOutlineShoppingCart size={25}/>,
         title: "سبد خرید",
-        href: '/',
+        href: '/ShoppingBasket',
     },
     {
         id: 4,
         icon: <FaRegHeart size={23}/>,
         title: "علاقه‌مندی‌ها",
-        href: '/',
+        href: '/Favorites',
     },
 ]
 
@@ -36,12 +36,12 @@ export const loginItems = [
         id: 1,
         icon: <PiSignInBold size={25}/>,
         title: "ورود",
-        href: '/',
+        href: '/login',
     },
     {
         id: 2,
         icon: <BiUserPlus size={25}/>,
         title: "ثبت نام",
-        href: '/testing',
+        href: '/register',
     },
 ]
