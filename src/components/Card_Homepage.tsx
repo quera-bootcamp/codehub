@@ -5,12 +5,13 @@ import { Badge } from './Badge';
 interface CardHomepageProps {
   title: string;
   imgsrce : string;
-  price : string
+  price : string;
+  style? : string;
 }
 
-export const Card_Homepage: React.FC<CardHomepageProps> = ({ price , title , imgsrce = ""}) => {
+export const Card_Homepage: React.FC<CardHomepageProps> = ({ price , title , imgsrce = "" , style = ""}) => {
   return (
-    <div className="flex flex-col grow gap-3 justify-start items-stretch w-52 relative">
+    <div className={`flex flex-col gap-3 justify-start items-stretch relative ${style}`}>
       <Like_Icon/>
       <img className='rounded-xl' src={imgsrce} alt="" />
       <div className="flex flex-row justify-between items-center">
@@ -20,3 +21,6 @@ export const Card_Homepage: React.FC<CardHomepageProps> = ({ price , title , img
     </div>
   );
 };
+
+
+// style is for width : if use this component in Home_page width must be w-52 and if use in special_product must be w-56 

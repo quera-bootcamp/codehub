@@ -2,7 +2,7 @@ const Homepageitems = [
     {
         title : "iphone 13",
         price : 1234,
-        imgsrce : "../assets/icons/react.svg"
+        imgsrce : ""
     },
 
     {
