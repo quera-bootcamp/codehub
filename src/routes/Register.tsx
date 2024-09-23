@@ -1,5 +1,5 @@
 import RegisterForm from "../components/RegisterForm.tsx";
-import loginLightImage from "../../public/images/loginLightMode.png"
+import LoginRegisterImage from "../components/LoginRegisterImage.tsx";
 
 const Register = () => {
     return (
@@ -7,12 +7,7 @@ const Register = () => {
             <div className={'w-1/2'}>
                 <RegisterForm/>
             </div>
-            <div className={'w-1/2'}>
-                <img
-                    src={loginLightImage}
-                    alt="logo"
-                />
-            </div>
+            <LoginRegisterImage/>
         </div>
     );
 };

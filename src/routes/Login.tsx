@@ -1,6 +1,5 @@
-// import loginDarkImage from "../../public/images/loginDarkMode.png"
-import loginLightImage from "../../public/images/loginLightMode.png"
 import LoginForm from "../components/LoginForm.tsx";
+import LoginRegisterImage from "../components/LoginRegisterImage.tsx";
 
 const Login = () => {
     return (
@@ -8,12 +7,7 @@ const Login = () => {
             <div className={'w-1/2'}>
                 <LoginForm/>
             </div>
-            <div className={'w-1/2'}>
-                <img
-                    src={loginLightImage}
-                    alt="logo"
-                />
-            </div>
+            <LoginRegisterImage/>
         </div>
     );
 };
