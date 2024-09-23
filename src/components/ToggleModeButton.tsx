@@ -1,25 +1,8 @@
-import {useState, useEffect} from 'react';
-import {MdOutlineDarkMode} from "react-icons/md";
-import {MdOutlineLightMode} from "react-icons/md";
+import {useTheme} from "../stroe/ThemeContext.tsx";
+import {MdOutlineDarkMode, MdOutlineLightMode} from "react-icons/md";
 
 const ToggleModeButton = () => {
-    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
-
-    useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [darkMode]);
-
-    const toggleDarkMode = () => {
-        setDarkMode(prevMode => {
-            const newMode = !prevMode;
-            localStorage.setItem('theme', newMode ? 'dark' : 'light');
-            return newMode;
-        });
-    };
+    const {darkMode, toggleDarkMode} = useTheme();
 
     return (
         <button
@@ -30,4 +13,5 @@ const ToggleModeButton = () => {
         </button>
     );
 }
+
 export default ToggleModeButton;
