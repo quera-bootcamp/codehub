@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+
 interface Button_Type {
-    button_style : string;
-    value : string;
+    button_style: string;
+    children: React.ReactNode;
 }
-export const Button : React.FC<Button_Type> =  ({button_style , value}) => {
+
+export const Button: React.FC<Button_Type> = ({ button_style, children }) => {
   return (
-    <button className={`bg-danger ${button_style}`}>{value}</button>
-  )
-}
+    <button className={`bg-danger ${button_style}`}>
+      {children}
+    </button>
+  );
+};

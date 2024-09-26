@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-export const Like_Icon = () => {
+export const LikeIcon = () => {
     const [like,setlike] = useState<boolean>(false);
     if(like){
       return(
