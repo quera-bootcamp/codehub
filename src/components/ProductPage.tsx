@@ -1,4 +1,11 @@
+import { Button } from "./Common/Button";
+import Dropdown from "./DropDown";
+import { Like_Icon } from "./Like_Icon";
+
 const ProductPage = () => {
+  const handleDropdownSelect = (value: number) => {
+    console.log("Selected value:", value);
+  };
   return (
     <div className="flex gap-x-32 py-11">
       <img className="rounded-lg" src="./images/mackbookPro.jpg" alt="" />
@@ -23,7 +30,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="flex justify-between">
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <p>۵۰۰۰ نظر</p>
             <div className="flex">
               <svg
@@ -148,7 +155,21 @@ const ProductPage = () => {
               </svg>
             </div>
           </div>
+          <Dropdown
+            options={[1, 2, 3, 4, 5]}
+            defaultValue={1}
+            onSelect={handleDropdownSelect}
+          />
         </div>
+        <div>
+          <Button
+            button_style="rounded-lg text-default-50 p-3"
+            value="افزودن به سبد خرید"
+          />
+        </div>
+      </div>
+      <div>
+        <Like_Icon />
       </div>
     </div>
   );
