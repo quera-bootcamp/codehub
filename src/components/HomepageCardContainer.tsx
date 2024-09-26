@@ -12,10 +12,10 @@ interface items_type {
 interface HomePageProps {
     items: items_type[];
     style? : string;
-    style_for_card? : string;
+    CardStyle? : string;
   }
 
-const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , style_for_card = ""}) => {
+const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , CardStyle = ""}) => {
 
     const [itemList, setItemList] = useState<items_type[]>([]);
 
@@ -27,7 +27,7 @@ const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , s
     <div className={`flex flex-row flex-wrap gap-10 justify-start items-start ${style}`}>
       {
         itemList.map((element , index) => (
-          <CardHomepage style={style_for_card} price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrc={element.imgsrc || Icon} title={element.title}  />
+          <CardHomepage style={CardStyle} price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrc={element.imgsrc || Icon} title={element.title}  />
         ))
       }
     </div>
