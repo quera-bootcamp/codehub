@@ -1,19 +1,19 @@
 import React from 'react';
-import { Like_Icon } from './Like_Icon';
+import { LikeIcon } from './LikeIcon';
 import { Badge } from './Badge';
 
 interface CardHomepageProps {
   title: string;
-  imgsrce : string;
+  imgsrc : string;
   price : string;
   style? : string;
 }
 
-export const Card_Homepage: React.FC<CardHomepageProps> = ({ price , title , imgsrce = "" , style = ""}) => {
+export const CardHomepage: React.FC<CardHomepageProps> = ({ price , title , imgsrc = "" , style = ""}) => {
   return (
     <div className={`flex flex-col gap-3 justify-start items-stretch relative ${style}`}>
-      <Like_Icon/>
-      <img className='rounded-xl' src={imgsrce} alt="" />
+      <LikeIcon/>
+      <img className='rounded-xl' src={imgsrc} alt="" />
       <div className="flex flex-row justify-between items-center">
         <p className='text-sm font-normal text-default-950 dark:text-default-100'>{title}</p>
         <Badge price={price}/>
