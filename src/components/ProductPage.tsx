@@ -1,6 +1,7 @@
 import { Button } from "./Common/Button";
 import Dropdown from "./DropDown";
-import { Like_Icon } from "./Like_Icon";
+import Info from "./Info";
+import { LikeIcon } from "./LikeIcon";
 
 const ProductPage = () => {
   const handleDropdownSelect = (value: number) => {
@@ -17,6 +18,7 @@ const ProductPage = () => {
           ساعت عمر باتری و طراحی بدون فن.
         </h5>
         <p className="text-5xl">۱۰,۰۰۰ تومان</p>
+        <Info />
         <div>
           <div>
             <p></p>
@@ -164,12 +166,12 @@ const ProductPage = () => {
         <div>
           <Button
             button_style="rounded-lg text-default-50 p-3"
-            value="افزودن به سبد خرید"
+            children="افزودن به سبد خرید"
           />
         </div>
       </div>
       <div>
-        <Like_Icon />
+        <LikeIcon />
       </div>
     </div>
   );
