@@ -20,16 +20,11 @@ const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNe
 
   const [formattedPrice, setFormattedPrice] = useState<string>(BasketItems.price);
 
-  // Create options for the dropdown
   const optionsArray = [
-    // Generate numbers from 1 to BasketItems.number
     ...Array.from({ length: BasketItems.number-1 }, (_, index) => index+1),
-    
-    // Generate numbers from BasketItems.number to BasketItems.number + 4
     ...Array.from({ length: 5 }, (_, index) => BasketItems.number + index),
   ];
 
-  // Handle change in the dropdown
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
     const value = parseInt(e.target.value);
     setNewNumber(index,value)

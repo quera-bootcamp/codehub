@@ -11,7 +11,7 @@ const ShoppingItems = [
         brand : "samsung",
         number : 3,
         price : "10",
-        imgsrc : "s"
+        imgsrc : ""
     },
     {
         title : "iphone 12 inch",
