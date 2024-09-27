@@ -10,9 +10,11 @@ interface BasketItemsType {
 
 interface ShoppingBasketProps {
   BasketItems: BasketItemsType;
+  setNewPrice : (index : number , price : string , value : number) => void;
+  index : number;
 }
 
-const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems }) => {
+const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNewPrice , index }) => {
 
 
   const [formattedPrice, setFormattedPrice] = useState<string>(BasketItems.price);
@@ -33,15 +35,16 @@ const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems }) => {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
     const value = parseInt(e.target.value);
     setSelectedNumber(value);
+    setNewPrice(index,BasketItems.price,value)
   };
 
   useEffect(() => {
     let counter = 0;
     let result = '';
     
-    for (let i = formattedPrice.length - 1; i >= 0; i--) {
+    for (let i = BasketItems.price.length - 1; i >= 0; i--) {
       counter++;
-      result = formattedPrice[i] + result;
+      result = BasketItems.price[i] + result;
       
       if (counter === 3 && i !== 0) {
         result = ',' + result;
