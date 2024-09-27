@@ -18,23 +18,20 @@ interface BasketItemsType {
 
 export const ShoppingBasketPage : React.FC<ShoppingBasketProps> = ({items}) => {
     
-  
-  const [prices , setprices] = useState<string[]>(
-        items.map((element) => {
-            return ( parseInt(element.price) * element.number ).toString()
-        })
-    );
-
-    // const [totalPrice , setTotalPrice] = useState<string>("");
+   const [shopItems , setshopItems] = useState<BasketItemsType[]>(items);
 
 
-    const updatePrice = (index : number , price : string , value : number):void => {
-        let updateprice : number = 0;
-        let newprices : string[] = [];
-        updateprice = parseInt(price) * value;
-        newprices = [...prices];
-        newprices[index] = updateprice.toString();
-        setprices(newprices);
+    const updateNumber = (index : number , value : number):void => {
+        const newshopItems = [...shopItems];
+        newshopItems[index].number = value;
+        setshopItems(newshopItems);
+    }
+
+
+    const remvoeItems = (itemIndex : number):void => {
+      setshopItems(shopItems.filter((_,index) => {
+        return index !== itemIndex
+      }));
     }
 
     const totalPrice =  useMemo(() => {
@@ -42,8 +39,8 @@ export const ShoppingBasketPage : React.FC<ShoppingBasketProps> = ({items}) => {
         let sumstring : string = "";
         let counter : number = 0;
         let result : string = "";
-        prices.map((element) => {
-            sum += parseInt(element);
+        shopItems.map((element) => {
+            sum += (parseInt(element.price) * element.number);
         });
 
         sumstring = sum.toString();
@@ -58,46 +55,21 @@ export const ShoppingBasketPage : React.FC<ShoppingBasketProps> = ({items}) => {
       }
     }
     return result
-    } , [prices]);
-
-
-  //   useEffect(() => {
-  //     let sum : number = 0;
-  //     let sumstring : string = "";
-  //     let counter : number = 0;
-  //     let result : string = "";
-  //     items.map((element) => {
-  //         sum += parseInt(element.price) * element.number;
-  //     });
-
-  //     sumstring = sum.toString();
-  
-  // for (let i = sumstring.length - 1; i >= 0; i--) {
-  //   counter++;
-  //   result = sumstring[i] + result;
-    
-  //   if (counter === 3 && i !== 0) {
-  //     result = ',' + result;
-  //     counter = 0;
-  //   }
-  // }
-
-  // setTotalPrice(result);
-  // } , []);
+    } , [shopItems]);
 
   return (
     <div>
         <div className='w-full flex flex-col justify-start items-center gap-4'>
             {
-                items.map((element,index) => (
-                    <ShoppingBasketCard index={index} setNewPrice={updatePrice} key={index} BasketItems={element} /> 
+                shopItems.map((element,index) => (
+                    <ShoppingBasketCard remove={remvoeItems} index={index} setNewNumber={updateNumber} key={index} BasketItems={element} /> 
                 ))
             }
         </div>
-        <div>
-            <p>{`تعداد : (${items.length})`}</p>
-            <p>{totalPrice}</p>
-            <Button button_style='w-96 h-10 text-default-50'>
+        <div className='flex flex-col gap-1 justify-start items-start mt-7'>
+            <p>{`تعداد : (${shopItems.length})`}</p>
+            <p>{`${totalPrice} تومان`}</p>
+            <Button button_style='w-96 h-10 text-default-50 rounded-2xl'>
                 تکمیل خرید
             </Button>
         </div>

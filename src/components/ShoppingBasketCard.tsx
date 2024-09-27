@@ -10,17 +10,15 @@ interface BasketItemsType {
 
 interface ShoppingBasketProps {
   BasketItems: BasketItemsType;
-  setNewPrice : (index : number , price : string , value : number) => void;
+  setNewNumber : (index : number , value : number) => void;
   index : number;
+  remove : (itemIndex : number) => void;
 }
 
-const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNewPrice , index }) => {
+const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNewNumber , index , remove }) => {
 
 
   const [formattedPrice, setFormattedPrice] = useState<string>(BasketItems.price);
-
-  // State to keep track of the selected value
-  const [selectedNumber, setSelectedNumber] = useState<number>(BasketItems.number);
 
   // Create options for the dropdown
   const optionsArray = [
@@ -34,8 +32,7 @@ const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNe
   // Handle change in the dropdown
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
     const value = parseInt(e.target.value);
-    setSelectedNumber(value);
-    setNewPrice(index,BasketItems.price,value)
+    setNewNumber(index,value)
   };
 
   useEffect(() => {
@@ -73,7 +70,7 @@ const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNe
       </div>
       <div className='flex flex-row justify-center items-center gap-4'>
 
-        <select className='pl-6 rounded-md dark:text-default-50 dark:bg-[#3F4043]' value={selectedNumber} onChange={handleSelectChange}>
+        <select className='pl-6 rounded-md dark:text-default-50 dark:bg-[#3F4043]' value={BasketItems.number} onChange={handleSelectChange}>
           {optionsArray.map((i) => (
             <option className='dark:text-default-50  dark:bg-[#3F4043]' key={i} value={i}>
               {i}
@@ -82,6 +79,7 @@ const ShoppingBasketCard: React.FC<ShoppingBasketProps> = ({ BasketItems , setNe
         </select>
 
         <svg
+        onClick={() => remove(index)}
         className='cursor-pointer'
           width="14"
           height="16"
