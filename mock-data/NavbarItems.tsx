@@ -15,7 +15,7 @@ export const NavbarItems = [
         id: 2,
         icon: <BiShoppingBag size={25}/>,
         title: "فروشگاه",
-        href: '/testing',
+        href: '/Shop',
     },
     {
         id: 3,
