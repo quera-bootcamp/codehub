@@ -11,11 +11,11 @@ const Input = ({
                }: {
     name: string;
     type: string;
-    value: string;
-    error: string;
-    label: string;
+    value?: string;
+    error?: string;
+    label?: string;
     placeholder: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
     return (
         <div className="relative">
