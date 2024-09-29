@@ -7,6 +7,8 @@ const Home = () => {
     return (
         <>
             <div className="flex justify-between">
+
+
                 {/*TO DO: Card home page*/}
                 <div>
                 </div>
