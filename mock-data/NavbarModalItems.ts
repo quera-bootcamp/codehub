@@ -4,7 +4,7 @@ export const modalItems = [
         title: "پروفایل",
     },
     {
-        id: 1,
+        id: 2,
         title: "خروج از حساب",
     },
 ]
