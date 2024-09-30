@@ -8,6 +8,7 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
     {
         id: 3,
@@ -24,6 +26,7 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
     {
         id: 4,
@@ -32,6 +35,7 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
     {
         id: 5,
@@ -40,6 +44,7 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
     {
         id: 6,
@@ -48,5 +53,6 @@ export const shopItem = [
         title: 'Apple iPhone 14 Pro',
         price: '۱۰,۰۰۰',
         description: 'آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر',
+        href: "/",
     },
 ]
