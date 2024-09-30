@@ -4,7 +4,7 @@ import RadioInput from "./RadioInput.tsx";
 
 const ShopFilter = () => {
     return (
-        <div className={'w-64 h-[810px] bg-default-600 dark:bg-default-900 flex flex-col items-center sticky top-2'}>
+        <div className={'w-64 h-[810px] bg-default-600 dark:bg-default-950 flex flex-col items-center sticky top-2'}>
             <div>
                 <Button button_style={'bg-white dark:bg-black rounded-full w-56 mt-2 py-2'}>
                     فیلتر برند
@@ -28,7 +28,7 @@ const ShopFilter = () => {
                 />
             </div>
 
-            <Button button_style={'w-3/4 bg-white border-default-400 border-2 border-primary rounded-md'}>
+            <Button button_style={'w-3/4 bg-inherit border-default-400 border-[1.5px] p-0.5 rounded-md font-primaryBold'}>
                 حذف فیلتر ها
             </Button>
         </div>
