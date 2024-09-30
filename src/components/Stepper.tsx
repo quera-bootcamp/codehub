@@ -22,12 +22,12 @@ const Stepper: React.FC = () => {
             step.id < steps.length ? "w-full" : ""
           }`}
         >
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-5">
             <span
-              className={`text-sm mb-4 ${
+              className={`text-lg mb-4 ${
                 step.completed
                   ? "text-success-400"
-                  : "text-default-950 font-bold"
+                  : "text-default-950 dark:text-default-50 font-bold"
               }`}
             >
               {step.label}
@@ -41,8 +41,8 @@ const Stepper: React.FC = () => {
               <div
                 className={`border-t-2 ${
                   steps[step.id]?.completed
-                    ? "border-green-500"
-                    : "border-gray-300"
+                    ? "border-success-500"
+                    : "border-default-300"
                 }`}
               ></div>
             </div>
