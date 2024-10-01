@@ -95,7 +95,7 @@ const ShoppingProgress: React.FC = () => {
 
           <button
             type="submit"
-            className="block px-6 py-2 bg-danger rounded-3xl text-white w-full"
+            className="block px-6 py-2 bg-danger-400 hover:bg-danger-500 active:bg-danger-600 rounded-3xl text-white w-full"
             disabled={Object.values(error).some((err) => err !== "")}
           >
             ادامه
