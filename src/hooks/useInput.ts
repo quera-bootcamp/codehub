@@ -10,6 +10,11 @@ const initialFormState = {
   city: "",
   country: "",
   postID: "",
+  brand: "",
+  price: "",
+  description: "",
+  stock: "",
+  availability: "",
 };
 
 const initialErrorState = {
@@ -21,6 +26,11 @@ const initialErrorState = {
   city: "",
   country: "",
   postID: "",
+  brand: "",
+  price: "",
+  description: "",
+  stock: "",
+  availability: "",
 };
 
 const validationMessages = {
@@ -34,19 +44,26 @@ const validationMessages = {
   requiredCountry: "لطفا کشور را وارد نمایید",
   requiredPostID: "لطفا کدپستی را وارد نمایید",
   postIDMissLimit: "کدپستی باید ۱۰ رقم باشد",
+  requiredBrand: "لطفا برند مورد نظر را وارد نمایید",
+  requiredPrice: "لطفا قیمت را وارد نمایید",
+  requiredDescription: "لطفا کادر توضیحات را پر نمایید",
+  requiredStock: "تعداد قابل خرید را وارد نمایید",
 };
 
 const useInput = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [error, setError] = useState(initialErrorState);
-
   const navigate = useNavigate();
 
   const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
-      setError((prev) => ({ ...prev, [name]: "" }));
+      setError((prev) => ({ ...prev, [name]: "" })); // Clear error when typing
     },
     []
   );
@@ -93,6 +110,22 @@ const useInput = () => {
     }
     if (formData.postID.toString().length !== 10) {
       newError.postID = validationMessages.postIDMissLimit;
+      isValid = false;
+    }
+    if (!formData.brand.trim()) {
+      newError.brand = validationMessages.requiredBrand;
+      isValid = false;
+    }
+    if (!formData.stock.trim()) {
+      newError.stock = validationMessages.requiredStock;
+      isValid = false;
+    }
+    if (!formData.description.trim()) {
+      newError.description = validationMessages.requiredDescription;
+      isValid = false;
+    }
+    if (!formData.price.trim()) {
+      newError.price = validationMessages.requiredPrice;
       isValid = false;
     }
 
