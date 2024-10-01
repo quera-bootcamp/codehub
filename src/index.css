@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply bg-default-100 dark:bg-default-950 dark:text-white font-primaryRegular;
+        @apply bg-default-100 dark:bg-[#0F0F10] dark:text-white font-primaryRegular;
     }
 }
 

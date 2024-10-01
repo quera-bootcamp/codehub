@@ -1,9 +1,57 @@
+import axios from "axios";
 import Input from "./Input.tsx";
-import { Link } from "react-router-dom";
-import useInput from "../hooks/useInput.ts";
+import React, {useState} from "react";
+import {Button} from "./Common/Button.tsx";
+import {Link, useNavigate} from "react-router-dom";
+import {useUser} from "../userStore/UserContext.tsx";
 
 const RegisterForm = () => {
-    const { formData, error, handleInputChange, handleSubmit } = useInput();
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirm_Password, setConfirm_Password] = useState('');
+    const [error, setError] = useState('');
+    const {user} = useUser();
+    const navigate = useNavigate();
+
+    const validateInput = () => {
+        if (!username || !email || !password || !confirm_Password) {
+            return "پر کردن فرم های بالا برای کدهابی شدنت اجباریه";
+        }
+        return "";
+    };
+    if (user) {
+        console.log(user)
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const validationError = validateInput();
+        if (validationError) {
+            setError(validationError);
+            return;
+        }
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/users", {
+                username,
+                email,
+                password,
+                confirm_Password,
+            }, {withCredentials: true});
+
+            if (response.status >= 200 && response.status < 300) {
+                navigate('/');
+            } else {
+                setError(response.data.message || 'مشکلی پیش اومده، لطفا بعدا تلاش کنید');
+            }
+        } catch (err) {
+            if (password != confirm_Password)
+                console.log(err);
+            setError('کدهابی بازی در نیار، رمز های عبورت باهم متفاوتن');
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit} className="w-2/3 space-y-6">
@@ -13,9 +61,8 @@ const RegisterForm = () => {
                 label="نام"
                 name="name"
                 type="text"
-                error={error.name}
-                value={formData.name}
-                onChange={handleInputChange}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="نام خود را وارد نمایید"
             />
 
@@ -23,9 +70,8 @@ const RegisterForm = () => {
                 label="ایمیل"
                 name="email"
                 type="email"
-                error={error.email}
-                value={formData.email}
-                onChange={handleInputChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="ایمیل خود را وارد نمایید"
             />
 
@@ -33,9 +79,8 @@ const RegisterForm = () => {
                 label="رمز عبور"
                 name="password"
                 type="password"
-                error={error.password}
-                value={formData.password}
-                onChange={handleInputChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="رمز عبور خود را وارد نمایید"
             />
 
@@ -43,25 +88,24 @@ const RegisterForm = () => {
                 type="password"
                 label="تکرار رمز عبور"
                 name="reEnterPassword"
-                error={error.reEnterPassword}
-                value={formData.reEnterPassword}
-                onChange={handleInputChange}
+                value={confirm_Password}
+                onChange={(e) => setConfirm_Password(e.target.value)}
                 placeholder="رمز عبور را مجددا وارد نمایید"
             />
 
+            {error && <p className="text-red-500">{error}</p>}
+
             <div className="pb-4 mt-6">
-                <button
+                <Button
                     type="submit"
-                    className="block px-6 py-2 bg-danger rounded-lg text-white"
-                    disabled={Object.values(error).some((err) => err !== "")}
-                >
+                    button_style={'block px-6 py-2 rounded-lg text-white'}>
                     ثبت نام
-                </button>
+                </Button>
             </div>
 
             <span>
                 عضو هستید؟
-                <Link className="text-danger pr-2" to="/Login">
+                <Link className="text-danger pr-2" to={"/Login"}>
                     ورود
                 </Link>
             </span>
