@@ -28,10 +28,10 @@ const Dropdown = <T extends string | number>({
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="flex items-center justify-between w-20 px-4 py-2 bg-default-50 border rounded-lg shadow-sm focus:outline-none"
+        className="flex items-center justify-between w-20 px-4 py-2 dark:bg-default-950 dark:border-default-800 bg-default-50 border rounded-lg shadow-sm focus:outline-none"
       >
         <svg
-          className={`w-4 h-4 transform transition-transform duration-300 ${
+          className={`w-4 h-4 transform transition-transform duration-300  ${
             isOpen ? "rotate-180" : "rotate-0"
           }`}
           fill="none"
@@ -44,13 +44,14 @@ const Dropdown = <T extends string | number>({
             strokeLinejoin="round"
             strokeWidth="2"
             d="M19 9l-7 7-7-7"
+            className=""
           ></path>
         </svg>
         <span>{selectedValue}</span>
       </button>
 
       {isOpen && (
-        <ul className="absolute z-10 w-full mt-1 bg-default-50 border rounded-lg shadow-lg">
+        <ul className="absolute z-10 w-full mt-1 dark:bg-default-950 dark:border-default-800 bg-default-50 border rounded-lg shadow-lg">
           {options.map((value, index) => (
             <li
               key={index}

@@ -1,17 +1,36 @@
 import Stepper from "./Stepper";
 import useInput from "../hooks/useInput";
 import Input from "./Input";
+import { useState } from "react";
+import { CustomIcon } from "./CustomIcon";
+
+interface PaymentMethod {
+  id: string;
+  label: string;
+}
 
 const ShoppingProgress: React.FC = () => {
   const { formData, error, handleInputChange, handleSubmit } = useInput();
+
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    string | null
+  >(null);
+
+  const paymentMethods: PaymentMethod[] = [
+    { id: "pasargad", label: "درگاه پرداخت پاسارگاد" },
+    { id: "anotherMethod", label: "روش پرداخت دیگر" },
+  ];
+
   return (
     <div className="mx-96">
       <div className="pb-24">
         <Stepper />
       </div>
       <div>
-        <form onSubmit={handleSubmit} className=" space-y-6">
-          <span className="font-primaryBold text-xl block">خرید</span>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <span className="font-primaryBold text-xl block">
+            آدرس دریافت کننده
+          </span>
 
           <Input
             label="آدرس"
@@ -52,45 +71,21 @@ const ShoppingProgress: React.FC = () => {
             onChange={handleInputChange}
             placeholder="کد پستی را وارد نمایید"
           />
+
           <div>
-            <span className="text-default-700 text-sm block pb-2 ">
+            <span className="text-default-700 text-sm block pb-2">
               روش پرداخت
             </span>
-            <div className="flex gap-2 items-center">
-              <svg
-                width="13"
-                height="14"
-                viewBox="0 0 13 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="0.5"
-                  y="1"
-                  width="12"
-                  height="12"
-                  rx="6"
-                  fill="black"
+
+            {paymentMethods.map((method) => (
+              <div key={method.id} className="flex gap-2 items-center">
+                <CustomIcon
+                  selected={selectedPaymentMethod === method.id}
+                  onClick={() => setSelectedPaymentMethod(method.id)}
                 />
-                <rect
-                  x="0.5"
-                  y="1"
-                  width="12"
-                  height="12"
-                  rx="6"
-                  stroke="#DB2777"
-                />
-                <rect
-                  x="2.6001"
-                  y="3.09961"
-                  width="7.8"
-                  height="7.8"
-                  rx="3.9"
-                  fill="#DB2777"
-                />
-              </svg>
-              <span>درگاه پرداخت پاسارگاد</span>
-            </div>
+                <span>{method.label}</span>
+              </div>
+            ))}
           </div>
 
           <button
