@@ -1,8 +1,8 @@
 import Slider from "../components/Slider";
 import productInfo from "../../mock-data/ProductInfo";
 import WelcomeHomePage from "../components/WelcomeHomePage.tsx";
-import HomepageCardContainer from "../components/HomepageCardContainer.tsx";
 import { useEffect, useState } from "react";
+import { SpecialProductHomepage } from "../components/SpecialProductHomepage.tsx";
 import axios from "axios";
 
 interface items_type {
@@ -40,7 +40,7 @@ const Home = () => {
                 <Slider sliderData={productInfo} />
             </div>
             <div className="mt-14 pr-20">
-                <HomepageCardContainer items={items} style="w-full" CardStyle="w-56" />
+                <SpecialProductHomepage items={items} />
             </div>
 
             
