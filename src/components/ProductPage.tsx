@@ -157,7 +157,7 @@ const ProductPage = () => {
           </div>
           <div>
             <Button
-              button_style="rounded-lg text-default-50 p-3"
+              button_style="rounded-lg bg-danger-400 hover:bg-danger-500 active:bg-danger-600 text-default-50 p-3"
               children="افزودن به سبد خرید"
             />
           </div>
@@ -211,7 +211,7 @@ const ProductPage = () => {
             </div>
             <div>
               <Button
-                button_style="rounded-lg px-4 py-2 text-default-50 mt-6"
+                button_style="rounded-lg bg-danger-400 hover:bg-danger-500 active:bg-danger-600 px-4 py-2 text-default-50 mt-6"
                 children="ثبت نظر"
               />
             </div>
