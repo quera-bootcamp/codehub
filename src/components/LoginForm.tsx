@@ -1,15 +1,13 @@
 import axios from "axios";
 import Input from "./Input";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../userStore/UserContext.tsx";
 import {Button} from "./Common/Button.tsx";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { user } = useUser();
     const navigate = useNavigate();
 
     const validateInput = () => {
@@ -18,10 +16,6 @@ const LoginForm = () => {
         }
         return "";
     };
-    if (user) {
-        console.log(user)
-    }
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -39,11 +33,11 @@ const LoginForm = () => {
 
             if (response.status === 200) {
                 navigate('/');
+                location.reload();
             } else {
                 setError(response.data.message || 'Login failed.');
             }
-        } catch (err) {
-            console.log(err);
+        } catch {
             setError('کدهابی بازی در نیار، ایمیل یا رمزت اشتباهه');
         }
     };

@@ -1,8 +1,18 @@
 import HomepageCardContainer from './HomepageCardContainer'
-import items from "../../mock-data/HomepageItems"
 import { Button } from './Common/Button'
 
-export const SpecialProductHomepage = () => {
+interface items_type {
+  title: string;
+  price: string | number;
+  imgsrc?: string;
+}
+
+
+interface items {
+  items : items_type[];
+}
+
+export const SpecialProductHomepage : React.FC<items> = ({items}) => {
   return (
     <div className='w-full'>
         <div className='w-full m-6 flex flex-row justify-between items-center'>
