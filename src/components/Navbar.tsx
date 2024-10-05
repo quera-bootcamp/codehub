@@ -1,10 +1,9 @@
-import {Link} from 'react-router-dom';
 import NavbarLinks from './NavbarLinks.tsx';
 import {useUser} from '../userStore/UserContext.tsx';
 import ToggleModeButton from './ToggleModeButton.tsx';
 import LoginRegisterLinks from './LoginRegisterLinks.tsx';
-import {modalItems} from "../../mock-data/NavbarModalItems.ts";
 import {MdOutlineKeyboardArrowDown} from "react-icons/md";
+import {modalItems} from "../../mock-data/NavbarModalItems.ts";
 
 const Navbar = () => {
     const {user} = useUser();
@@ -24,13 +23,14 @@ const Navbar = () => {
                             کاربر
                             <MdOutlineKeyboardArrowDown className={' group-hover:rotate-180 transition duration-100'}/>
                         </button>
+
                         <div
                             className="absolute bottom-6 bg-default-300 dark:bg-default-950 w-full mt-2 rounded-md dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {modalItems.map((item) =>
-                                <Link key={item.id} to={''}
+                                <div key={item.id}
                                       className='block text-right p-2 hover:bg-white dark:hover:bg-danger-900 dark:hover:text-danger rounded-lg  m-4'>
-                                    {item.title}
-                                </Link>
+                                    {item.title()}
+                                </div>
                             )}
                         </div>
                     </div>

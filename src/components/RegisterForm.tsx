@@ -3,7 +3,6 @@ import Input from "./Input.tsx";
 import React, {useState} from "react";
 import {Button} from "./Common/Button.tsx";
 import {Link, useNavigate} from "react-router-dom";
-import {useUser} from "../userStore/UserContext.tsx";
 
 const RegisterForm = () => {
     const [username, setUsername] = useState('');
@@ -11,7 +10,6 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [confirm_Password, setConfirm_Password] = useState('');
     const [error, setError] = useState('');
-    const {user} = useUser();
     const navigate = useNavigate();
 
     const validateInput = () => {
@@ -20,9 +18,6 @@ const RegisterForm = () => {
         }
         return "";
     };
-    if (user) {
-        console.log(user)
-    }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -43,12 +38,12 @@ const RegisterForm = () => {
 
             if (response.status >= 200 && response.status < 300) {
                 navigate('/');
+                location.reload();
             } else {
                 setError(response.data.message || 'مشکلی پیش اومده، لطفا بعدا تلاش کنید');
             }
-        } catch (err) {
+        } catch {
             if (password != confirm_Password)
-                console.log(err);
             setError('کدهابی بازی در نیار، رمز های عبورت باهم متفاوتن');
         }
     };
