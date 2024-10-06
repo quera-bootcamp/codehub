@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const ProfileLink = () => {
     return (
-        <Link to={'/'}>پروفایل</Link>
+        <Link to={'/UpdateProfile'}>پروفایل</Link>
 
     );
 };

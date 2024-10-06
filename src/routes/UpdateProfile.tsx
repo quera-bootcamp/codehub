@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Input from "./Input.tsx";
-import { Button } from './Common/Button.tsx';
+import Input from "../components/Input.tsx";
+import { Button } from '../components/Common/Button.tsx';
 
 const UpdateProfile = () => {
   const [name,setName] = useState<string>("");
@@ -22,20 +22,20 @@ const UpdateProfile = () => {
     }
   }
   return (
-    <div className='w-full'>
-      <form>
+    <div className='w-1/2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+      <form onSubmit={handlesubmit}>
         <h1 className='mb-5'>بروز رسانی پروفایل</h1>
         <Input label='نام' placeholder='نام خود را وارد نمایید' name='name' type='text' value={name}  onChange={(e) => setName(e.target.value)} />
         <Input name='email' label='ایمیل' type='email' placeholder='ایمیل خود را وارد نمایید' value={email}  onChange={(e) => setEmail(e.target.value)}  />
         <Input name='password' label='رمز عبور' placeholder='رمز عبور خود را وارد نمایید' type='password' value={password} onChange={(e) => setPassword(e.target.value)}   />
         <Input name='password' label='تکرار رمز عبور' placeholder='تکرار رمز عبور خود را وارد نمایید' type='password' value={reEnterpassword} onChange={(e) => setreEnterpassword(e.target.value)} />
-        <p className='text-danger-800 text-lg font-light mt-4'>{error}</p>
+        <p className='text-danger-800 text-lg font-light mt-4 mb-4'>{error}</p>
         <div className='w-full flex flex-row justify-between items-center'>
-        <Button button_style='px-5 py-3 rounded-2xl' children={
-          <p className='text-default-50 text-xl font-normal'>سفارشات من</p>
+        <Button button_style='px-2 py-2 rounded-xl' children={
+          <p className='text-default-50 text-base'>سفارشات من</p>
         } />
-        <Button func={() => handlesubmit} button_style='px-5 py-3 rounded-2xl'  children={
-          <p className='text-default-50 text-xl font-normal'>بروز رسانی</p>
+        <Button type='submit' button_style='px-2 py-2 rounded-xl'  children={
+          <p className='text-default-50 text-base'>بروز رسانی</p>
         } />
         </div>
         </form>
