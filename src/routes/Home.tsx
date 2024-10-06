@@ -39,7 +39,7 @@ const Home = () => {
                 <WelcomeHomePage />
                 <Slider sliderData={productInfo} />
             </div>
-            <div className="mt-14 pr-20">
+            <div>
                 <SpecialProductHomepage items={items} />
             </div>
 
