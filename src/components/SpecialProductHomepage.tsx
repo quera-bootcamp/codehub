@@ -5,6 +5,7 @@ interface items_type {
   title: string;
   price: string | number;
   imgsrc?: string;
+  id:string;
 }
 
 

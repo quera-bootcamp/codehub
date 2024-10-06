@@ -9,6 +9,7 @@ interface items_type {
     title: string;
     price: string | number;
     imgsrc?: string;
+    id:string;
 }
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
                 imgsrc: item.image,
                 price: item.price.toString(),
                 title: item.name,
+                id : item._id
             }));
             setItems(tempItems);
         } catch (error) {

@@ -6,6 +6,7 @@ import Register from "./routes/Register.tsx";
 import Favorites from "./routes/Favorites.tsx";
 import ShoppingBasket from "./routes/ShoppingBasket.tsx";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import UpdateProfile from "./routes/UpdateProfile.tsx";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/Register" element={<Register/>}/>
                         <Route path="/ShoppingBasket" element={<ShoppingBasket/>}/>
                         <Route path="/Favorites" element={<Favorites/>}/>
+                        <Route path="/UpdateProfile" element={<UpdateProfile/>}/>
                     </Routes>
                 </div>
             </Router>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { CardHomepage } from './CardHomepage';
 import Icon from "../assets/icons/react.svg"
+import { Link } from 'react-router-dom';
 
 
 interface items_type {
     title : string;
     price : string | number;
     imgsrc? : string;
+    id:string;
 }
 
 interface HomePageProps {
@@ -27,7 +29,9 @@ const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , C
     <div className={`flex flex-row flex-wrap gap-10 justify-start items-start ${style}`}>
       {
         itemList.map((element , index) => (
+          <Link to={`/products/${element.id}`}>
           <CardHomepage style={CardStyle} price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrc={element.imgsrc || Icon} title={element.title}  />
+          </Link>
         ))
       }
     </div>
