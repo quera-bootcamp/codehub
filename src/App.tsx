@@ -16,7 +16,7 @@ function App() {
         <div className="pt-6 max-w-[1440px] mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/Shop" element={<Shop />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
