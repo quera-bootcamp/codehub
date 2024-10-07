@@ -28,7 +28,7 @@ const AddProduct: React.FC = () => {
               <img
                 src={imagePreview}
                 alt="Product Preview"
-                className=" object-cover rounded-md"
+                className=" object-cover rounded-md w-9/12 h-2/5 mx-auto"
               />
             </div>
           )}
