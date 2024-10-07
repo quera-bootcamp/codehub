@@ -42,7 +42,7 @@ const ShopCards = () => {
                             </Badge>
                         </div>
                         <div className={'absolute top-2 right-4'}>
-                            <LikeIcon/>
+                            <LikeIcon id={item._id} price={item.price.toString()} title={item.name} imgsrc={item.image} />
                         </div>
                     </div>
                     <div className={'p-4 space-y-2'}>

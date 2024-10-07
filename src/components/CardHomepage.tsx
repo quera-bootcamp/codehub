@@ -1,15 +1,19 @@
 import React, { useState , useEffect } from 'react';
 import { LikeIcon } from './LikeIcon';
 import { Badge } from './Badge';
+import { Link } from 'react-router-dom';
+import {useFavorites} from "../hooks/FavoritesContext"
 
 interface CardHomepageProps {
   title: string;
-  imgsrc : string;
+  imgsrc? : string;
   price : string;
   style? : string;
+  id:string;
 }
 
-export const CardHomepage: React.FC<CardHomepageProps> = ({ price , title , imgsrc = "" , style = ""}) => {
+export const CardHomepage: React.FC<CardHomepageProps> = ({ price , id , title , imgsrc = "" , style = "" }) => {
+  const { favorites } = useFavorites();
   const [formattedPrice, setFormattedPrice] = useState<string>(price);
 
   useEffect(() => {
@@ -27,16 +31,19 @@ export const CardHomepage: React.FC<CardHomepageProps> = ({ price , title , imgs
     }
 
     setFormattedPrice(result);
-  }, [price]);
+  }, [price,favorites]);
+
 
   return (
     <div className={`flex flex-col gap-3 justify-start items-stretch relative ${style}`}>
-      <LikeIcon/>
+      <LikeIcon  id={id} price={price} title={title} imgsrc={imgsrc} />
+      <Link to={`/products/${id}`}>
       <img className='rounded-xl' src={imgsrc} alt="" />
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-row justify-between items-center mt-3">
         <p className='text-sm font-normal text-default-950 dark:text-default-100'>{title}</p>
         <Badge children={formattedPrice}/>
       </div>
+      </Link>
     </div>
   );
 };
