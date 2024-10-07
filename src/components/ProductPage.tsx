@@ -57,7 +57,7 @@ const ProductPage = () => {
       try {
         if (id) {
           const response = await axios.get(
-            `http://localhost:8000/api/products/${id}`
+            `http://localhost:5000/api/products/${id}`
           );
           setProduct(response.data);
           console.log(response.data);
@@ -246,7 +246,12 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="absolute top-20 left-40">
-          <LikeIcon title={""} price={""} id={""} />
+          <LikeIcon
+            id={product?._id ?? ""}
+            price={product?.price.toString() ?? ""}
+            title={product?.name ?? ""}
+            imgsrc={product?.image ?? ""}
+          />
         </div>
       </div>
       <div className="flex gap-48 p-6">
