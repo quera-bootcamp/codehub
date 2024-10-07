@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"; // Import useEffect
-import axios from "axios"; // Import axios
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Button } from "./Common/Button";
 import Dropdown from "./DropDown";
 import Info from "./Info";
@@ -38,13 +38,11 @@ const ProductPage = () => {
   const { id } = useParams<string>();
 
   function getTimeDifference(timestamp: string) {
-    const now = new Date().getTime(); // Convert 'now' to a number (milliseconds)
-    const givenTime = new Date(timestamp).getTime(); // Convert 'givenTime' to milliseconds
+    const now = new Date().getTime();
+    const givenTime = new Date(timestamp).getTime();
 
-    // Calculate the difference in milliseconds
     const differenceInMs = now - givenTime;
 
-    // Convert difference to minutes
     const differenceInMinutes = Math.floor(differenceInMs / (1000 * 60));
 
     if (differenceInMinutes < 60) {
