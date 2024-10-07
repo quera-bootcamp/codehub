@@ -7,7 +7,7 @@ const Favorites = () => {
         <div className="flex flex-row w-full gap-7 flex-wrap justify-start items-start">
              {
                favorites.map((element)  => (
-                <CardHomepage initialState={true} style="w-56" id={element.id} imgsrc={element.imgsrc} title={element.title} price={element.price} />
+                <CardHomepage  style="w-56" id={element.id} imgsrc={element.imgsrc} title={element.title} price={element.price} />
                ))
              }
         </div>

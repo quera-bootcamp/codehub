@@ -21,6 +21,7 @@ const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , C
     const [itemList, setItemList] = useState<items_type[]>([]);
 
     useEffect(() => {
+      console.log("Items updated:", items);
       setItemList(items);
     }, [items]);
 
@@ -28,7 +29,7 @@ const HomepageCardContainer : React.FC<HomePageProps> = ({items , style = "" , C
     <div className={`flex flex-row flex-wrap gap-10 justify-start items-start ${style}`}>
       {
         itemList.map((element , index) => (
-          <CardHomepage id={element.id} style={CardStyle} price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrc={element.imgsrc || Icon} title={element.title}  />
+          <CardHomepage  id={element.id} style={CardStyle} price={typeof element.price === 'number' ? element.price.toString() : element.price} key={index} imgsrc={element.imgsrc || Icon} title={element.title}  />
         ))
       }
     </div>

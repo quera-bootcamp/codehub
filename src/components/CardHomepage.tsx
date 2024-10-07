@@ -2,6 +2,7 @@ import React, { useState , useEffect } from 'react';
 import { LikeIcon } from './LikeIcon';
 import { Badge } from './Badge';
 import { Link } from 'react-router-dom';
+import {useFavorites} from "../hooks/FavoritesContext"
 
 interface CardHomepageProps {
   title: string;
@@ -9,10 +10,10 @@ interface CardHomepageProps {
   price : string;
   style? : string;
   id:string;
-  initialState?:boolean;
 }
 
-export const CardHomepage: React.FC<CardHomepageProps> = ({ price , id , title , imgsrc = "" , style = "" , initialState}) => {
+export const CardHomepage: React.FC<CardHomepageProps> = ({ price , id , title , imgsrc = "" , style = "" }) => {
+  const { favorites } = useFavorites();
   const [formattedPrice, setFormattedPrice] = useState<string>(price);
 
   useEffect(() => {
@@ -30,11 +31,12 @@ export const CardHomepage: React.FC<CardHomepageProps> = ({ price , id , title ,
     }
 
     setFormattedPrice(result);
-  }, [price]);
+  }, [price,favorites]);
+
 
   return (
     <div className={`flex flex-col gap-3 justify-start items-stretch relative ${style}`}>
-      <LikeIcon initialState={initialState} id={id} price={price} title={title} imgsrc={imgsrc} />
+      <LikeIcon  id={id} price={price} title={title} imgsrc={imgsrc} />
       <Link to={`/products/${id}`}>
       <img className='rounded-xl' src={imgsrc} alt="" />
       <div className="flex flex-row justify-between items-center mt-3">

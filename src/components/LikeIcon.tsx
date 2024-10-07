@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {useFavorites} from "../hooks/FavoritesContext"
 
 interface itemsType {
@@ -12,6 +12,11 @@ interface itemsType {
 export const LikeIcon : React.FC<itemsType> = ({title , price , imgsrc , id , initialState}) => {
   const [like, setlike] = useState<boolean>(initialState ?? false);
   const { addToFavorites , setFavorites ,favorites } = useFavorites();
+
+  useEffect(() => {
+    const isFavorite = favorites.some((item) => item.id === id);
+    setlike(isFavorite);
+  }, [favorites, id]);
 
   const handleClick = () => {
     
