@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Badge} from "./Badge.tsx";
 import {Link} from "react-router-dom";
 import {LikeIcon} from "./LikeIcon.tsx";
 import {useState, useEffect} from "react";
@@ -35,6 +36,11 @@ const ShopCards = () => {
                 <div key={item._id} className={'bg-default-600 dark:bg-default-900 rounded-lg w-96'}>
                     <div className={'relative'}>
                         <img src={item.image} alt={item.name}/>
+                        <div className={'absolute bottom-2 right-2'}>
+                            <Badge>
+                                {item.category.name}
+                            </Badge>
+                        </div>
                         <div className={'absolute top-2 right-4'}>
                             <LikeIcon/>
                         </div>
