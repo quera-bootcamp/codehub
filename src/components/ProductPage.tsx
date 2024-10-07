@@ -71,8 +71,6 @@ const ProductPage = () => {
     fetchProduct();
   }, [id]);
 
-  console.log(getTimeDifference(product?.createdAt ?? ""));
-
   if (loading) {
     return <p>درحال دریافت اطلاعات...</p>;
   }
