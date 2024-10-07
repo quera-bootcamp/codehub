@@ -106,7 +106,14 @@ const Slider: React.FC<SliderProps> = ({ sliderData }) => {
           </p>
         </div>
 
-        <Info productId={activeItem.id} />
+        <Info
+          name={activeItem.productName}
+          quantity={activeItem.quantity}
+          rating={activeItem.rating}
+          numReviews={activeItem.comments}
+          countInStock={activeItem.stock}
+          time={activeItem.time}
+        />
       </div>
     </div>
   );
