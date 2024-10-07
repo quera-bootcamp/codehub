@@ -16,7 +16,6 @@ export const LikeIcon : React.FC<itemsType> = ({title , price , imgsrc , id , in
   const handleClick = () => {
     
     if(!like){
-      console.log("messi");
       
       const temp = {
         title : title,
