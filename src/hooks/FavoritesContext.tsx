@@ -5,12 +5,14 @@ interface items_type {
   title: string;
   price: string;
   imgsrc?: string;
+  id: string;
 }
 
-// Define the context's shape
+// Define the context's shape, including setFavorites
 interface FavoritesContextProps {
   favorites: items_type[];
   addToFavorites: (item: items_type) => void;
+  setFavorites: React.Dispatch<React.SetStateAction<items_type[]>>; // Add setFavorites here
 }
 
 // Create the context
@@ -34,7 +36,7 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addToFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, addToFavorites, setFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );
