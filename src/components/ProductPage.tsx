@@ -37,6 +37,23 @@ const ProductPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams<string>();
 
+  function getTimeDifference(timestamp: string) {
+    const now = new Date().getTime(); // Convert 'now' to a number (milliseconds)
+    const givenTime = new Date(timestamp).getTime(); // Convert 'givenTime' to milliseconds
+
+    // Calculate the difference in milliseconds
+    const differenceInMs = now - givenTime;
+
+    // Convert difference to minutes
+    const differenceInMinutes = Math.floor(differenceInMs / (1000 * 60));
+
+    if (differenceInMinutes < 60) {
+      return `${differenceInMinutes} دقیقه قبل`;
+    } else if (differenceInMinutes >= 60) {
+      return `${convertToPersianNumber(differenceInMinutes % 60)} ساعت قبل`;
+    }
+  }
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -56,6 +73,8 @@ const ProductPage = () => {
     fetchProduct();
   }, [id]);
 
+  console.log(getTimeDifference(product?.createdAt ?? ""));
+
   if (loading) {
     return <p>درحال دریافت اطلاعات...</p>;
   }
@@ -67,11 +86,7 @@ const ProductPage = () => {
   return (
     <div className="flex flex-col">
       <div className="flex gap-x-32 py-11">
-        <img
-          className="rounded-lg"
-          src="../public/images/mackbookPro.jpg"
-          alt=""
-        />
+        <img className="rounded-lg" src={product?.image} alt="" />
 
         <div className="flex flex-col gap-y-24 w-1/3">
           <h1 className="font-bold text-2xl">{product?.name}</h1>
@@ -79,7 +94,20 @@ const ProductPage = () => {
           <p className="text-5xl">
             {convertToPersianNumber(product?.price ?? 0)} تومان
           </p>
-          <Info productId={2} />
+          <Info
+            name={product?.name ?? ""}
+            quantity={product?.quantity ?? 0}
+            rating={product?.rating ?? 0}
+            numReviews={product?.numReviews ?? 0}
+            countInStock={product?.countInStock ?? 0}
+            time={
+              getTimeDifference(
+                product?.updatedAt
+                  ? `${product?.updatedAt}`
+                  : `${product?.createdAt}`
+              ) ?? ""
+            }
+          />
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
               <p className=" ">
