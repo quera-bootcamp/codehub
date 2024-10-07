@@ -8,6 +8,8 @@ import ShoppingBasket from "./routes/ShoppingBasket.tsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductPage from "./components/ProductPage.tsx";
 import UpdateProfile from "./routes/UpdateProfile.tsx";
+import ShoppingProgress from "./routes/ShoppingProgress.tsx";
+import AddProduct from "./routes/CreateProduct.tsx";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/ShoppingBasket" element={<ShoppingBasket />} />
             <Route path="/Favorites" element={<Favorites />} />
             <Route path="/UpdateProfile" element={<UpdateProfile />} />
+            <Route path="/ShoppingProgress" element={<ShoppingProgress />} />
+            <Route path="/AddProduct" element={<AddProduct />} />
           </Routes>
         </div>
       </Router>
