@@ -1,8 +1,8 @@
-import Stepper from "./Stepper";
-import useInput from "../hooks/useInput";
-import Input from "./Input";
-import { useState } from "react";
-import { CustomIcon } from "./CustomIcon";
+import Stepper from "../components/Stepper.tsx";
+import useInput from "../hooks/useInput.ts";
+import Input from "../components/Input.tsx";
+import React, { useState } from "react";
+import { CustomIcon } from "../components/CustomIcon.tsx";
 
 interface PaymentMethod {
   id: string;
