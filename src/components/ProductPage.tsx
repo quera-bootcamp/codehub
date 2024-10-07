@@ -246,7 +246,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="absolute top-20 left-40">
-          <LikeIcon />
+          <LikeIcon title={""} price={""} id={""} />
         </div>
       </div>
       <div className="flex gap-48 p-6">
