@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "./Input";
-import useInput from "../hooks/useInput";
+import Input from "../components/Input.tsx";
+import useInput from "../hooks/useInput.ts";
 
 const AddProduct: React.FC = () => {
   const { formData, error, handleInputChange, handleSubmit } = useInput();

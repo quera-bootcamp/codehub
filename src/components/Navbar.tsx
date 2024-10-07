@@ -28,7 +28,7 @@ const Navbar = () => {
                             className="absolute bottom-6 bg-default-300 dark:bg-default-950 w-full mt-2 rounded-md dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {modalItems.map((item) =>
                                 <div key={item.id}
-                                      className='block text-right p-2 hover:bg-white dark:hover:bg-danger-900 dark:hover:text-danger rounded-lg  m-4'>
+                                     className='block text-right p-2 hover:bg-white dark:hover:bg-danger-900 dark:hover:text-danger rounded-lg  m-4'>
                                     {item.title()}
                                 </div>
                             )}

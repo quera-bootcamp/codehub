@@ -1,11 +1,54 @@
-import productInfo from "../../mock-data/ProductInfo";
+// import { useEffect, useState } from "react";
+// import productInfo from "../../mock-data/ProductInfo";
+// import axios from "axios";
 
-const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
-  const product = productInfo.find((p) => p.id === productId);
+interface productTypes {
+  name: string;
+  quantity: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  time: string;
+}
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+const ProductInfoList: React.FC<productTypes> = ({
+  name,
+  quantity,
+  rating,
+  numReviews,
+  countInStock,
+  time,
+}) => {
+  // const product = productInfo.find((p) => p.id === productId);
+
+  // const [product, setProduct] = useState<productTypes | null>(null);
+  // const [loading, setLoading] = useState<boolean>(true);
+
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       if (id) {
+  //         const response = await axios.get(
+  //           `http://localhost:8000/api/products/${id}`
+  //         );
+  //         setProduct(response.data);
+  //         console.log(response.data);
+  //       }
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching product:", error);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchProduct();
+  // }, [id]);
+
+  // if (loading) {
+  //   return <p>درحال دریافت اطلاعات...</p>;
+  // }
+  // if (!product) {
+  //   return <div>Product not found</div>;
+  // }
 
   return (
     <div className="flex justify-between gap-10 text-right">
@@ -38,7 +81,7 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
             </svg>
           </span>
           <span className="ml-2 dark:text-default-400">امتیاز : </span>
-          <span>{product.rating}</span>
+          <span>{rating}</span>
         </div>
         <div className="flex items-center whitespace-nowrap">
           <span className="ml-2">
@@ -68,7 +111,7 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
             </svg>
           </span>
           <span className="ml-2 dark:text-default-400">تعداد : </span>
-          <span>{product.quantity}</span>
+          <span>{quantity}</span>
         </div>
         <div className="flex items-center whitespace-nowrap">
           <span className="ml-2">
@@ -93,9 +136,9 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
             </svg>
           </span>
           <span className="ml-2 dark:text-default-400">
-            {product.stock ? "موجودی : " : "ناموجود"}
+            {countInStock ? "موجودی : " : "ناموجود"}
           </span>
-          <span>${product.stock}</span>
+          <span>{countInStock}</span>
         </div>
       </div>
 
@@ -123,7 +166,7 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
             </svg>
           </span>
           <span className="ml-2 dark:text-default-400">برند : </span>
-          <span>{product.brand}</span>
+          <span>{name}</span>
         </div>
         <div className="flex items-center whitespace-nowrap">
           <span className="ml-2">
@@ -154,7 +197,7 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
           </span>
 
           <span className="ml-2 dark:text-default-400">زمان بروزرسانی : </span>
-          <span>{product.time}</span>
+          <span>{time}</span>
         </div>
         <div className="flex items-center whitespace-nowrap">
           <span className="ml-2">
@@ -184,7 +227,7 @@ const ProductInfoList: React.FC<{ productId: number }> = ({ productId }) => {
             </svg>
           </span>
           <span className="ml-2 dark:text-default-400">نظرات :</span>
-          <span>{product.comments}</span>
+          <span>{numReviews}</span>
         </div>
       </div>
     </div>

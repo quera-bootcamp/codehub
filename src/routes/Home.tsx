@@ -9,6 +9,7 @@ interface items_type {
     title: string;
     price: string | number;
     imgsrc?: string;
+    id:string;
 }
 
 const Home = () => {
@@ -20,12 +21,13 @@ const Home = () => {
 
     const getProduct = async () => {
         try {
-            const response = await axios.get("http://185.8.174.74:8090/localhost:5000/api/products/allproducts");
+            const response = await axios.get("http://localhost:5000/api/products/allproducts");
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const tempItems: items_type[] = response.data.map((item: any) => ({
                 imgsrc: item.image,
                 price: item.price.toString(),
                 title: item.name,
+                id : item._id
             }));
             setItems(tempItems);
         } catch (error) {
@@ -39,7 +41,7 @@ const Home = () => {
                 <WelcomeHomePage />
                 <Slider sliderData={productInfo} />
             </div>
-            <div className="mt-14 pr-20">
+            <div>
                 <SpecialProductHomepage items={items} />
             </div>
 

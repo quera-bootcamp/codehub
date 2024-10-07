@@ -1,31 +1,114 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Button } from "./Common/Button";
 import Dropdown from "./DropDown";
 import Info from "./Info";
 import { LikeIcon } from "./LikeIcon";
+import { useParams } from "react-router-dom";
+
+interface productTypes {
+  _id: string;
+  name: string;
+  image: string;
+  quantity: number;
+  category: string;
+  description: string;
+  rating: number;
+  numReviews: number;
+  price: number;
+  countInStock: number;
+  reviews: [];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+function convertToPersianNumber(number: string | number): string {
+  const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return number
+    .toString()
+    .replace(/\d/g, (digit) => persianDigits[parseInt(digit)]);
+}
 
 const ProductPage = () => {
   const [score, setScore] = useState<string>("");
   const [comment, setComment] = useState<string>("");
+  const [product, setProduct] = useState<productTypes | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { id } = useParams<string>();
+
+  function getTimeDifference(timestamp: string) {
+    const now = new Date().getTime();
+    const givenTime = new Date(timestamp).getTime();
+
+    const differenceInMs = now - givenTime;
+
+    const differenceInMinutes = Math.floor(differenceInMs / (1000 * 60));
+
+    if (differenceInMinutes < 60) {
+      return `${differenceInMinutes} دقیقه قبل`;
+    } else if (differenceInMinutes >= 60) {
+      return `${convertToPersianNumber(differenceInMinutes % 60)} ساعت قبل`;
+    }
+  }
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        if (id) {
+          const response = await axios.get(
+            `http://localhost:5000/api/products/${id}`
+          );
+          setProduct(response.data);
+          console.log(response.data);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      }
+    };
+    fetchProduct();
+  }, [id]);
+
+  if (loading) {
+    return <p>درحال دریافت اطلاعات...</p>;
+  }
+
   const handleDropdownSelect = (value: string | number) => {
     console.log("Selected value:", value);
   };
+
   return (
     <div className="flex flex-col">
       <div className="flex gap-x-32 py-11">
-        <img className="rounded-lg" src="./images/mackbookPro.jpg" alt="" />
+        <img className="rounded-lg" src={product?.image} alt="" />
 
-        <div className="flex flex-col gap-y-24">
-          <h1 className="font-bold text-2xl">Apple MacBook Air M2</h1>
-          <h5 className="text-lg  ">
-            مک بوک ایر با تراشه M2 دارای صفحه نمایش 13.6 اینچی رتینا است. تا 18
-            ساعت عمر باتری و طراحی بدون فن.
-          </h5>
-          <p className="text-5xl">۱۰,۰۰۰ تومان</p>
-          <Info productId={2} />
+        <div className="flex flex-col gap-y-24 w-1/3">
+          <h1 className="font-bold text-2xl">{product?.name}</h1>
+          <h5 className="text-lg w-full break-words">{product?.description}</h5>
+          <p className="text-5xl">
+            {convertToPersianNumber(product?.price ?? 0)} تومان
+          </p>
+          <Info
+            name={product?.name ?? ""}
+            quantity={product?.quantity ?? 0}
+            rating={product?.rating ?? 0}
+            numReviews={product?.numReviews ?? 0}
+            countInStock={product?.countInStock ?? 0}
+            time={
+              getTimeDifference(
+                product?.updatedAt
+                  ? `${product?.updatedAt}`
+                  : `${product?.createdAt}`
+              ) ?? ""
+            }
+          />
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
-              <p className=" ">۵۰۰۰ نظر</p>
+              <p className=" ">
+                {convertToPersianNumber(product?.numReviews ?? 0)} نظر
+              </p>
               <div className="flex">
                 <svg
                   width="16"
@@ -162,8 +245,13 @@ const ProductPage = () => {
             />
           </div>
         </div>
-        <div>
-          <LikeIcon />
+        <div className="absolute top-20 left-40">
+          <LikeIcon
+            id={product?._id ?? ""}
+            price={product?.price.toString() ?? ""}
+            title={product?.name ?? ""}
+            imgsrc={product?.image ?? ""}
+          />
         </div>
       </div>
       <div className="flex gap-48 p-6">

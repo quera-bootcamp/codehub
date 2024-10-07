@@ -44,7 +44,7 @@ const RegisterForm = () => {
             }
         } catch {
             if (password != confirm_Password)
-            setError('کدهابی بازی در نیار، رمز های عبورت باهم متفاوتن');
+                setError('کدهابی بازی در نیار، رمز های عبورت باهم متفاوتن');
         }
     };
 

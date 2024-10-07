@@ -1,8 +1,8 @@
 import axios from "axios";
 import Input from "./Input";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {Button} from "./Common/Button.tsx";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ const LoginForm = () => {
             const response = await axios.post("http://localhost:5000/api/users/auth", {
                 email,
                 password,
-            },{withCredentials:true});
+            }, {withCredentials: true});
 
             if (response.status === 200) {
                 navigate('/');
