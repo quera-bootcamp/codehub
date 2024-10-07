@@ -41,7 +41,7 @@ export const CardHomepage: React.FC<CardHomepageProps> = ({ price , id , title ,
       <img className='rounded-xl' src={imgsrc} alt="" />
       <div className="flex flex-row justify-between items-center mt-3">
         <p className='text-sm font-normal text-default-950 dark:text-default-100'>{title}</p>
-        <Badge children={formattedPrice}/>
+        <Badge children={`${formattedPrice} تومان`}/>
       </div>
       </Link>
     </div>
